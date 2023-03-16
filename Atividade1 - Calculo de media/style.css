@@ -1,0 +1,19 @@
+h1{ 
+    color: green;
+    font-size: 15px;
+}
+h2
+{
+    color: rgb(0, 0, 255);
+    font-size: 15px;
+}
+h3{
+    color: red;
+    font-size: 15px;
+}
+input{
+    background-color: rgb(153, 239, 249);
+    border-color: rgb(248, 108, 218);
+    border-radius: 10px;
+    border-style: solid;
+}
