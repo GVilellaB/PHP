@@ -17,7 +17,11 @@ if (!empty($_GET["usuario"]) && !empty($_GET["senha"])) {
     $quantReg = mysqli_num_rows($result);
 
     if($quantReg > 0) {
+        while($linha = mysqli_fetch_assoc($result)){
+             $id = $linha["ID"];
+        }
         $_SESSION["usuario"] = $usuario;
+        $_SESSION["ID"] = $id;
         header('location:index.php');
     }else{
         header('location:login.php?erro=1');
@@ -75,6 +79,33 @@ if (!empty($_GET["usuario"]) && !empty($_GET["senha"])) {
                                         <a href="login.php"><img src="img/logo.png" style="width: 100px;"
                                                 alt="logo"></a>
                                         <h4 class="mt-1 mb-5 pb-1">*Nome da Clinica*</h4>
+                                    </div>
+                                    <div>
+                                        <?php
+                                            if (isset($_GET["erro"]) && $_GET["erro"] == 1) {
+                                        ?><div id="liveAlertPlaceholder"></div>
+                                            <script>
+                                                const alertPlaceholder1 = document.getElementById('liveAlertPlaceholder')
+
+                                                const alert1 = (message, type) => {
+                                                    const wrapper1 = document.createElement('div')
+                                                    wrapper1.innerHTML = [
+                                                        `<div class="alert alert-dismissible d-flex align-items-center alert alert-danger" role="alert">`,
+                                                        '<svg xmlns="http://www.w3.org/2000/svg" width="16" heigth="16" class="exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">',
+                                                        '<path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>',
+                                                        '</svg>',
+                                                        `<div>${message}</div>`,
+                                                        '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                                                        '</div>'
+                                                    ].join('')
+
+                                                    alertPlaceholder1.append(wrapper1)
+                                                }
+                                                alert1('Usuario nao existente', 'success');
+                                            </script>
+                                        <?php
+                                            }
+                                        ?>
                                     </div>
                                     <div>
                                         <?php
@@ -155,5 +186,4 @@ if (!empty($_GET["usuario"]) && !empty($_GET["senha"])) {
     </script>
 </body>
 </body>
-
 </html>
