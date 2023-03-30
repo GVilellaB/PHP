@@ -247,5 +247,4 @@ if (isset($_GET["cadastrar"])) {
     </script>
 </body>
 </body>
-
 </html>
