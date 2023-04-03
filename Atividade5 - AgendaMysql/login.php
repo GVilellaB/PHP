@@ -144,7 +144,7 @@ if (!empty($_GET["usuario"]) && !empty($_GET["senha"])) {
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <input type="text" id="form2Example22" name="senha" class="form-control"
+                                            <input type="password" id="form2Example22" name="senha" class="form-control"
                                                 placeholder="Senha" />
                                         </div>
 
